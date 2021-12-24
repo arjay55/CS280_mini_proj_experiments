@@ -16,6 +16,7 @@ print("series_index: ", series_index)
 
 plt.plot(series_index, series_value, '--bo', label='Training Average Sum of Squared Errors')
 #plt.show()
+print("last na")
 print("\nseries:\n", series)
 #series.plot()
 plt.show()
