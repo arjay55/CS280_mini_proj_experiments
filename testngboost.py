@@ -32,6 +32,8 @@ print("load boston: ", np.array(load_boston()))
 X, Y = load_boston(return_X_y=True)
 print("X: ", X)
 print("Y: ", Y)
+print("X shape: ", X.shape)
+print("Y shape: ", Y.shape)
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2)
 
 ngb = NGBRegressor().fit(X_train, Y_train)
