@@ -1,10 +1,11 @@
 from ngboost import NGBRegressor
-
+from scipy.stats import expon
+from scipy.stats import multivariate_normal
 from sklearn.datasets import load_boston
 from sklearn.datasets import load_diabetes
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
-from ngboost.scores import CRPScore
+from ngboost.scores import CRPScore, LogScore
 from ngboost.distns import Exponential
 from ngboost.distns import MultivariateNormal
 from pandas import read_csv
@@ -43,15 +44,24 @@ print("date_numerical: ", x_date_numerical)
 
 x_date_new = x_date_numerical.values.reshape(-1, 1)
 
-X_train, X_test, Y_train, Y_test = train_test_split(x_date_new, y_series_value, test_size=0.2)
+X_train, X_test, Y_train, Y_test = train_test_split(x_date_new, y_series_value, test_size=0.2, shuffle=False)
 #X_train, X_test, Y_train, Y_test = train_test_split(x_series_value, y_date_numerical, test_size=0.2)
+print("X_test: ", X_test)
+print("Y_actual: ", Y_test)
 
-ngb = NGBRegressor(Dist=MultivariateNormal(k=2), verbose=True).fit(X_train, Y_train)
+ngb = NGBRegressor(Dist=MultivariateNormal(k=2), Score=LogScore, verbose=True).fit(X_train, Y_train)
 Y_preds = ngb.predict(X_test)
 Y_dists = ngb.pred_dist(X_test)
 
 print("Y_preds: ", Y_preds)
 print("Y_dist: ", Y_dists)
+
+mean = Y_dists.mean
+sample = Y_dists.rv()
+scipy_list = Y_dists.scipy_distribution()
+
+print("mean: ", mean)
+print("sample: ", sample)
 
 # test Mean Squared Error
 test_MSE = mean_squared_error(Y_preds, Y_test)
