@@ -53,9 +53,11 @@ ngb = NGBRegressor(Dist=MultivariateNormal(k=2), Score=LogScore, verbose=True).f
 Y_preds = ngb.predict(X_test)
 Y_dists = ngb.pred_dist(X_test)
 
+# Deterministic Values
 print("Y_preds: ", Y_preds)
 print("Y_dist: ", Y_dists)
 
+# Probabilistic Values
 mean = Y_dists.mean
 sample = Y_dists.rv()
 scipy_list = Y_dists.scipy_distribution()
