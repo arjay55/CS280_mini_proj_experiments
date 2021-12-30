@@ -131,3 +131,6 @@ dmypy.json
 # Dataset
 UCSD-Microgrid-Database-processed/
 testngboost_2.py
+
+*.lock
+*.dirlock
