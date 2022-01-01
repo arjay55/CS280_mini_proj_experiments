@@ -136,3 +136,7 @@ testngboost_2.py
 *.dirlock
 featurewiz_try.ipynb
 train.csv
+supervised_dataset.csv.gz
+
+scratch.py
+testngboost_2.ipynb
