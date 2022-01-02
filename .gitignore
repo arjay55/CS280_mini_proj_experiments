@@ -139,4 +139,3 @@ train.csv
 supervised_dataset.csv.gz
 
 scratch.py
-testngboost_2.ipynb
