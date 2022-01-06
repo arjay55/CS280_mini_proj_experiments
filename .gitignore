@@ -139,3 +139,10 @@ train.csv
 supervised_dataset.csv.gz
 
 scratch.py
+ngboost_tutorial.ipynb
+ngb_allvar.pickle
+ngb_cont.pickle
+ngb.pickle
+ngboost_dataset.gz
+ngboost_dataset_cont.gz
+outputs_feature_select_cont.pickle
